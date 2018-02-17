@@ -5,7 +5,36 @@
         <ion-title>TodoList</ion-title>
       </ion-toolbar>
 		</ion-header>
-		<ion-content class="content">
+		<ion-content class="content" padding>
+
+<ion-card>
+		<ion-item>
+			<ion-label>Fave Type</ion-label>
+			<select v-model="fav.type">
+        <option disabled value="">Please select one</option>
+        <option value="shared">shared</option>
+        <option value="personal">personal</option>
+        <option value="work">work</option>
+			</select>
+		</ion-item>
+		<ion-item>
+			<ion-label>Fave Name</ion-label>
+			<ion-input type="text" placeholder="name to associate with link" 
+        :value="fav.name"  
+        v-on:input="fav.name = $event.target.value">
+      </ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Fave Link</ion-label>
+			<ion-input type="text" placeholder="website url" 
+        :value="fav.link"  
+        v-on:input="fav.link = $event.target.value">
+      </ion-input>
+		</ion-item>
+    <div padding>
+		  <ion-button @click="addFavorite()">ADD FAVORITE</ion-button>
+    </div>
+</ion-card>
       <ion-item>
         <ion-label><strong>Filter On Favorite Type</strong></ion-label>
         <select @change="selectedFilter($event)">
@@ -23,9 +52,9 @@
         <button ion-button @click="removeFromFavorites(f.id)">DELETE</button>
       </ion-item>
       </ion-list>
-			<ion-fab-button  @click="addFavorite">
+			<!-- <ion-fab-button  @click="addFavorite">
         <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
+      </ion-fab-button> -->
 
 		</ion-content>
 	</ion-page>
@@ -38,6 +67,11 @@ export default {
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
+      fav: {
+        name: '',
+        link: '',
+        type: '',
+      },
     };
   },
   computed: {
@@ -46,21 +80,22 @@ export default {
     },
   },
   methods: {
+    updateInput(_event, ref) {
+      console.log(this.$refs[ref]);
+      this[ref] = this.$refs[ref].value;
+      debugger;
+    },
     removeFromFavorites(id) {
       this.$store.dispatch('removeFromFavorites', id);
     },
     addFavorite() {
-      this.$store.dispatch('addFavorite', {
-        type: 'shared',
-        name: 'aaron saunders',
-        link: 'www.link.com',
-      });
+      this.$store.dispatch('addFavorite', this.fav);
+      this.fav = {}
     },
     showDetail(_id) {
       this.$router.push({ path: '/' + _id });
     },
     selectedFilter(_value) {
-      debugger;
       console.log(_value.target.value);
       this.$store.dispatch('setFilter', _value.target.value);
     },
