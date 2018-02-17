@@ -1,13 +1,11 @@
 # Vuejs and Ionic Components
 
 A Vue.js project showing integration with Ionic Components
+* IMPORTANT => [Ionic 4 Component Documentation](https://github.com/ionic-team/ionic/tree/core/packages/core/src/components)
 * Creating Form Inputs w/ text and options
 * Using Ionic Card and List Components
-* Integrating Vuex for state management 
+* Integrating [Vuex for state management](https://vuex.vuejs.org/en/index.html) 
 
-Did run into an issue using the `ion-select` component and I opened an issue here, hopefully I will get a response to complete the example
-
-[Issue: ion-select not functioning properly in vuejs](https://github.com/ionic-team/ionic/issues/14040)
 
 ## Build Setup
 

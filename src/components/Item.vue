@@ -10,12 +10,12 @@
     <ion-card>
       <ion-item>
         <ion-label>Fave Type</ion-label>
-        <select v-model="fav.type">
-          <option disabled value="">Please select one</option>
-          <option value="shared">shared</option>
-          <option value="personal">personal</option>
-          <option value="work">work</option>
-        </select>
+        <ion-select @ionChange="fav.type = $event.target.value">
+          <ion-select-option disabled value="">Please select one</ion-select-option>
+          <ion-select-option value="shared">shared</ion-select-option>
+          <ion-select-option value="personal">personal</ion-select-option>
+          <ion-select-option value="work">work</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Fave Name</ion-label>
@@ -35,13 +35,12 @@
       <ion-label>
         <strong>Filter On Favorite Type</strong>
       </ion-label>
-      <select @change="selectedFilter($event)">
-        <option disabled value="">Please select one</option>
-        <option value="all">show all</option>
-        <option value="shared">shared</option>
-        <option value="personal">personal</option>
-        <option value="work">work</option>
-      </select>
+      <ion-select @ionChange="selectedFilter($event)">
+        <ion-select-option value="all">show all</ion-select-option>
+        <ion-select-option value="shared">shared</ion-select-option>
+        <ion-select-option value="personal">personal</ion-select-option>
+        <ion-select-option value="work">work</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-list>
       <ion-item v-for="f in favorites" :key="f.id">
@@ -95,6 +94,7 @@ export default {
       this.$router.push({ path: '/' + _id });
     },
     selectedFilter(_value) {
+      debugger;
       console.log(_value.target.value);
       this.$store.dispatch('setFilter', _value.target.value);
     },
