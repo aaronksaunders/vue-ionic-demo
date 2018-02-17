@@ -4,6 +4,8 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 
+import store from './store'
+
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/^ion-/];
 
@@ -11,6 +13,9 @@ Vue.config.ignoredElements = [/^ion-/];
 new Vue({
   el: "#app",
   router,
+  store,
   template: "<App/>",
-  components: { App }
+  components: {
+    App
+  }
 });
