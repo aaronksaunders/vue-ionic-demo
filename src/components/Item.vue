@@ -78,11 +78,6 @@ export default {
     },
   },
   methods: {
-    updateInput(_event, ref) {
-      console.log(this.$refs[ref]);
-      this[ref] = this.$refs[ref].value;
-      debugger;
-    },
     removeFromFavorites(id) {
       this.$store.dispatch('removeFromFavorites', id);
     },
