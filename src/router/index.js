@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Item from '../components/Item'
+import Item from '../components/Item.vue'
 import ItemDetail from '../components/ItemDetail'
 
 Vue.use(Router)

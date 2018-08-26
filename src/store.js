@@ -10,6 +10,10 @@ const store = new Vuex.Store({
     favFilter: "all"
   },
   getters: {
+    currentItem: (state) => (id) => {
+      debugger
+      return state.favorites.find(f => f.id === id)
+    },
     filteredFavs: state => {
       return state.favFilter === "all" ?
         state.favorites :
